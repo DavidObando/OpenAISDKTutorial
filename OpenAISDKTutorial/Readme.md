@@ -34,7 +34,9 @@ We might want to call external functions from the LLM. For real-world scenarios,
 
 1. Switch to the [step3](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/tree/step3) branch. See the [commit](https://github.com/your-repo/OpenAISDKTutorial/commit/step3).
 2. Implement the function calling. Modify the definition/implementation as you wish.
-
+3. Give your name to the LLM and ask it `Could you tell me which OpenAI Service should I use?`.
+4. Modify the `System Prompt` or `functionDescription` and See the behavior difference.
+ 
 ## Step 4. Structured Output
 
 If you want more deterministic results, consider using structured output. This is useful for obtaining specific types of results.
