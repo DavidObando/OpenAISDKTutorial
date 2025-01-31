@@ -26,6 +26,7 @@ In Step 1, we missed the history feature. The LLM doesn't remember the history, 
 1. Switch to the [step2](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/tree/step2) branch. See the [commit](https://github.com/your-repo/OpenAISDKTutorial/commit/step2).
 2. Implement the history feature and see how it works.
 3. Debug the [`ConversationExecutor`](OpenAISDKTutorial/ConversationExecutor.cs) to observe the behavior.
+4. Interact with the chat and verify if it retains the history.
 
 ## Step 3. Function Calling
 
