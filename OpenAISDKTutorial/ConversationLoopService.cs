@@ -5,9 +5,11 @@ namespace OpenAISDKTutorial
     public class ConversationLoopService : BackgroundService
     {
         private readonly ConversationExecutor _conversationExecutor;
-        public ConversationLoopService(ConversationExecutor conversationExecutor)
+        private readonly SessionManager _sessionManager;
+        public ConversationLoopService(ConversationExecutor conversationExecutor, SessionManager sessionManager)
         {
             _conversationExecutor = conversationExecutor;
+            _sessionManager = sessionManager;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -30,6 +32,15 @@ namespace OpenAISDKTutorial
                 if (input.ToLower() == "exit")
                 {
                     break;
+                }
+
+                if (input.ToLower() == "@history clear")
+                {
+                    Console.ForegroundColor = Constants.UIColor;
+                    Console.WriteLine("Cleared history");
+                    Console.ForegroundColor = currentColor;
+                    _sessionManager.ClearHistory();
+                    continue;
                 }
 
                 try
