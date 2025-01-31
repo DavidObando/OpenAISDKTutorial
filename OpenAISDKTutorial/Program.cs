@@ -14,6 +14,7 @@ namespace OpenAISDKTutorial
             builder.Services.AddSingleton<OpenAIClientProvider>();
             builder.Services.AddHostedService<ConversationLoopService>();
             builder.Services.AddSingleton<ConversationExecutor>();
+            builder.Services.AddSingleton<SessionManager>();
             builder.Configuration.AddJsonFile("appsettings.json");
             builder.Services.AddOptions<Settings>()
                 .Configure<IConfiguration>((settings, configuration) =>

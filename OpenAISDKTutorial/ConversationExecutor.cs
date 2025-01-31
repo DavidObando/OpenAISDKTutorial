@@ -4,11 +4,13 @@ namespace OpenAISDKTutorial
 {
     public class ConversationExecutor
     {
-        private OpenAIClientProvider _clientProvider;
+        private readonly OpenAIClientProvider _clientProvider;
+        private readonly SessionManager _sessionManager;
 
-        public ConversationExecutor(OpenAIClientProvider clientProvider)
+        public ConversationExecutor(OpenAIClientProvider clientProvider, SessionManager sessionManager)
         {
             _clientProvider = clientProvider;
+            _sessionManager = sessionManager;
         }
 
         public async Task<string> ExecuteConversationAsync(string input)
@@ -27,24 +29,29 @@ namespace OpenAISDKTutorial
             ChatClient chatClient = _clientProvider.GetChatClient();
             List<ChatMessage> chatMessages = new();
 
-            if (string.IsNullOrEmpty(systemPrompt))
+            // Adding history to the chat messages
+            chatMessages.AddRange(_sessionManager.GetHistory());
+
+            if (!string.IsNullOrEmpty(systemPrompt))
             {
                 chatMessages.Add(new SystemChatMessage(systemPrompt));
             }
 
-            chatMessages.Add(new UserChatMessage(userPrompt));
+            var userChatMessage = new UserChatMessage(userPrompt);
+            chatMessages.Add(userChatMessage);
+            _sessionManager.AddMessage(userChatMessage);
 
             var answer = await chatClient.CompleteChatAsync(chatMessages, options);
             var completion = answer.Value;
 
+            string assistant = "No response from OpenAI";
             if (completion.Content.Count > 0)
             {
-                return completion.Content[0].Text;
+                assistant = completion.Content[0].Text;
             }
-            else
-            {
-                return "No response from OpenAI";
-            }
+
+            _sessionManager.AddMessage(new AssistantChatMessage(assistant));
+            return assistant;
         }
     }
 }
