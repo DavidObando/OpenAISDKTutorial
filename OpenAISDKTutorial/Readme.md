@@ -42,6 +42,7 @@ We might want to call external functions from the LLM. For real-world scenarios,
 If you want more deterministic results, consider using structured output. This is useful for obtaining specific types of results.
 
 1. Switch to the [step4](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/tree/step4) branch. See the [commit](https://github.com/your-repo/OpenAISDKTutorial/commit/step4).
+2. Implement the structured output. Modify the definition/implementation as you wish.
 
 ## Step 5. Managing Tokens
 

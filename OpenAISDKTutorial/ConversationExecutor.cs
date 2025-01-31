@@ -1,4 +1,6 @@
-﻿using OpenAI.Chat;
+﻿using Microsoft.Extensions.Logging.Console;
+using OpenAI.Chat;
+using System.Text.Json;
 
 namespace OpenAISDKTutorial
 {
@@ -15,7 +17,7 @@ namespace OpenAISDKTutorial
             _zeroToHeroTool = zeroToHeroTool;
         }
 
-        public async Task<string> ExecuteConversationAsync(string input)
+        public async Task<ConversationResult> ExecuteConversationAsync(string input)
         {
             var client = _clientProvider.GetChatClient();
 
@@ -45,6 +47,12 @@ namespace OpenAISDKTutorial
 
             options.Tools.Add(_zeroToHeroTool.GetToolDefinition());
 
+            // Structured Output
+            options.ResponseFormat = ChatResponseFormat.CreateJsonSchemaFormat(
+                jsonSchemaFormatName: nameof(ConversationResult),
+                jsonSchema: ConversationResult.GetDefinition()
+                );
+
             var answer = await chatClient.CompleteChatAsync(chatMessages, options);
             var completion = answer.Value;
 
@@ -64,13 +72,19 @@ namespace OpenAISDKTutorial
             }
 
             string assistant = "No response from OpenAI";
+            ConversationResult result = new ConversationResult();
             if (completion.Content.Count > 0)
             {
-                assistant = completion.Content[0].Text;
+                var jsonOptions = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                result = JsonSerializer.Deserialize<ConversationResult>(completion.Content[0].Text, jsonOptions);
+                assistant = result.Text;
             }
 
             _sessionManager.AddMessage(new AssistantChatMessage(assistant));
-            return assistant;
+            return result;
         }
     }
 }
