@@ -46,8 +46,12 @@ namespace OpenAISDKTutorial
                 try
                 {
                     var answer = await _conversationExecutor.ExecuteConversationAsync(input);
-                    Console.ForegroundColor = Constants.UIColor;
-                    Console.WriteLine(answer);
+                    Console.ForegroundColor = GetColorFromSentiment(answer.Sentiment);
+                    Console.WriteLine(answer.Text);
+                    if (answer.OpenAIServiceId != -1)
+                    {
+                        Console.WriteLine($"Service ID: {answer.OpenAIServiceId}");
+                    }
                     Console.ForegroundColor = currentColor;
                 }
                 catch (Exception ex)
@@ -61,6 +65,17 @@ namespace OpenAISDKTutorial
                     continue;
                 }
             }
+        }
+
+        private static ConsoleColor GetColorFromSentiment(string sentiment)
+        {
+            return sentiment.ToLower() switch
+            {
+                "positive" => ConsoleColor.Yellow,
+                "negative" => Constants.DiagnosticColor,
+                "neutral" => Constants.UIColor,
+                _ => Constants.DebugColor,
+            };
         }
 
     }
