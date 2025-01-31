@@ -15,6 +15,7 @@ namespace OpenAISDKTutorial
             builder.Services.AddHostedService<ConversationLoopService>();
             builder.Services.AddSingleton<ConversationExecutor>();
             builder.Services.AddSingleton<SessionManager>();
+            builder.Services.AddSingleton<ZeroToHeroTool>();
             builder.Configuration.AddJsonFile("appsettings.json");
             builder.Services.AddOptions<Settings>()
                 .Configure<IConfiguration>((settings, configuration) =>
