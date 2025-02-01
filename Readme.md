@@ -8,9 +8,7 @@ This tutorial provides step-by-step instructions for using the OpenAI Library in
 
 ## Configuration
 
-1. Copy 
-
-appsettings.json.example to `appsettings.json`.
+1. Copy `appsettings.json.example` to `appsettings.json`.
 2. Fill in the required settings in `appsettings.json`.
 
 ## Step 1: Simple Conversation
