@@ -10,9 +10,7 @@ This tutorial provides step-by-step instructions for using the OpenAI Library in
 
 1. Copy 
 
-appsettings.json.example
-
- to `appsettings.json`.
+appsettings.json.example to `appsettings.json`.
 2. Fill in the required settings in `appsettings.json`.
 
 ## Step 1: Simple Conversation
@@ -22,11 +20,8 @@ Learn the fundamentals of the [ChatCompletionAPI](https://platform.openai.com/do
 1. Switch to the [step1](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/tree/step1) branch.
 2. Start the project.
 3. Interact with the LLM. Your input becomes the `User Prompt`. Modify the `System Prompt` as needed.
-4. Debug the system and inspect the payload of the `Request` and `Response` in the 
+4. Debug the system and inspect the payload of the `Request` and `Response` in the [ConversationExecutor](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/blob/step1/OpenAISDKTutorial/ConversationExecutor.cs).
 
-ConversationExecutor
-
-.
 5. Read about [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering) and experiment with different patterns.
 
 ## Step 2: History
@@ -35,11 +30,7 @@ In Step 1, the history feature was not implemented. The LLM doesn't remember the
 
 1. Switch to the [step2](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/tree/step2) branch. Refer to the [commit](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/commit/be2b7e70a85278a6ddea783966377f3c24a314ea) and [commit](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/commit/b7b81e749a6eb6ba0bb49780e4746351dad4ee71).
 2. Implement the history feature and observe its functionality.
-3. Debug the 
-
-ConversationExecutor
-
- to see how it behaves.
+3. Debug the [ConversationExecutor](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/blob/step2/OpenAISDKTutorial/ConversationExecutor.cs) to see how it behaves.
 4. Interact with the chat and verify if it retains the history.
 
 ## Step 3: Function Calling
