@@ -62,6 +62,6 @@ By completing this tutorial, you will understand 80% of the techniques used in A
 
 ## Reference
 
-* [OpenAI client library for .NET](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet)
-* [openai-dotnet](https://github.com/openai/openai-dotnet/tree/main)
-* [examples/chat](https://github.com/openai/openai-dotnet/tree/main/examples/Chat)
+* [OpenAI client library for .NET](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet) - Microsoft Azure SDK
+* [openai-dotnet](https://github.com/openai/openai-dotnet/tree/main) - OpenAI SDK
+* [examples/chat](https://github.com/openai/openai-dotnet/tree/main/examples/Chat) OpenAI SDK samples
