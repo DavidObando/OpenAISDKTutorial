@@ -1,6 +1,6 @@
 # Zero To Hero for C# Programmers - OpenAI Library Tutorial
 
-This tutorial provides step-by-step instructions for using the OpenAI Library in a C# application.
+This tutorial provides step-by-step instructions for using the [OpenAI client Library](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet) in a C# application.
 
 ## Prerequisites
 
@@ -59,3 +59,9 @@ Learn how to count the number of tokens consumed in advance. Compare the estimat
 ## Conclusion
 
 By completing this tutorial, you will understand 80% of the techniques used in AI coding for developing a C# application. Enjoy your learning journey!
+
+## Reference
+
+* [OpenAI client library for .NET](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/ai.openai-readme?view=azure-dotnet)
+* [openai-dotnet](https://github.com/openai/openai-dotnet/tree/main)
+* [examples/chat](https://github.com/openai/openai-dotnet/tree/main/examples/Chat)
