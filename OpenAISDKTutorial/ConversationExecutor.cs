@@ -53,8 +53,11 @@ namespace OpenAISDKTutorial
                 jsonSchema: ConversationResult.GetDefinition()
                 );
 
+            var tokenStatistics = await TokenUtils.GetAndValidateChatCompletionTokensStatistics(chatMessages);
+
             var answer = await chatClient.CompleteChatAsync(chatMessages, options);
             var completion = answer.Value;
+            completion.DisplayTokenCount();
 
             while(completion.FinishReason == ChatFinishReason.ToolCalls)
             {
@@ -67,8 +70,11 @@ namespace OpenAISDKTutorial
                         chatMessages.Add(new ToolChatMessage(toolCall.Id, toolAnswer));
                     }
                 }
+
+                tokenStatistics = await TokenUtils.GetAndValidateChatCompletionTokensStatistics(chatMessages);
                 answer = await chatClient.CompleteChatAsync(chatMessages, options);
                 completion = answer.Value;
+                completion.DisplayTokenCount();
             }
 
             string assistant = "No response from OpenAI";

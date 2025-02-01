@@ -14,5 +14,7 @@ namespace OpenAISDKTutorial
         public const ConsoleColor DiagnosticColor = ConsoleColor.DarkBlue;
         public const ConsoleColor WarningColor = ConsoleColor.Yellow;
         public const ConsoleColor DebugColor = ConsoleColor.DarkYellow;
+
+        public const int MaximumTokenLength = 126000; // GPT4o has a maximum token length of 128000. Token counter is approximate value.
     }
 }
