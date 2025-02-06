@@ -36,7 +36,7 @@ namespace OpenAISDKTutorial
             // Adding history to the chat messages
             chatMessages.AddRange(_sessionManager.GetHistory());
 
-            if (string.IsNullOrEmpty(systemPrompt))
+            if (!string.IsNullOrEmpty(systemPrompt))
             {
                 chatMessages.Add(new SystemChatMessage(systemPrompt));
             }
