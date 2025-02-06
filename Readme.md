@@ -58,6 +58,8 @@ Learn how to count the number of tokens consumed in advance. Compare the estimat
 1. Switch to the [step5](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/tree/step5) branch. Refer to the [commit](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/commit/3b0f84f7caf67fb3f96315a2de628d33501fd113).
 Read the code and run debug and learn how token management works in [ConversationExecutor](https://github.com/TsuyoshiUshio/OpenAISDKTutorial/blob/fd28d464abc4ced4baea7da5b7de5a5405784638/OpenAISDKTutorial/ConversationExecutor.cs#L56). Understand how token is managed before/after the ChatCompletion API call.
 
+For managing token, we use [Microsoft.DeepDev.TokenizerLib](https://github.com/microsoft/Tokenizer) but should migrate to [Microsoft.ML.Tokenizers](https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.tokenizers.tokenizer?view=ml-dotnet-preview).
+
 ## Conclusion
 
 By completing this tutorial, you will understand 80% of the techniques used in AI coding for developing a C# application. Enjoy your learning journey!
