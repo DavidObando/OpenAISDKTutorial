@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure.Identity;
+using System.Net;
 
 namespace OpenAISDKTutorial
 {
@@ -22,7 +24,18 @@ namespace OpenAISDKTutorial
         {
             _settings = options.Value;
             _logger = logger;
-            _azureClient = new AzureOpenAIClient(new Uri(_settings.OpenAIEndpoint), new AzureKeyCredential(_settings.OpenAIKey));
+            // Configure credential options to prioritize Windows credentials
+            var credentialOptions = new DefaultAzureCredentialOptions
+            {
+                ExcludeInteractiveBrowserCredential = false,  // Include browser prompts
+                ExcludeVisualStudioCredential = true,        // Avoid VS-specific credentials
+                ExcludeAzureCliCredential = true,            // Avoid Azure CLI credentials
+                ExcludeSharedTokenCacheCredential = false,    // Include shared cache credentials
+                ExcludeManagedIdentityCredential = false,    // Include Managed Identity (Windows)
+            };
+            _azureClient = new(
+                new Uri(_settings.OpenAIEndpoint),
+                new DefaultAzureCredential(credentialOptions));
             _chatClient = _azureClient.GetChatClient(_settings.OpenAIDeployment);
         }
 
