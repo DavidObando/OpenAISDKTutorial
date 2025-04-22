@@ -1,7 +1,6 @@
 {
   "Settings": {
     "OpenAIEndpoint": "https://<OpenAIServiceName>.openai.azure.com/",
-    "OpenAIKey": "<OpenAIServiceKey>",
     "OpenAIDeployment": "<DeploymentName>"
   }
 }
